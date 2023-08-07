@@ -1,5 +1,5 @@
 import './App.css'
-import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import {BrowserRouter,Routes,Route, HashRouter} from 'react-router-dom'
 import Auth from './layout/Auth'
 import Login from './paginas/Login'
 import { LandinPage } from './paginas/LandinPage'
@@ -21,7 +21,7 @@ import Restablecer from './paginas/Restablecer'
 function App() {
   return (
     <>
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         
         <Route index element={<LandinPage/>}/>
@@ -43,11 +43,8 @@ function App() {
           <Route path='actualizar/:id' element={<Actualizar/>}/>
         </Route>
 
-
-
-
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
     </>
   )
 }
