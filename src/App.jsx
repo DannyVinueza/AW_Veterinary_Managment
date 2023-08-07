@@ -1,5 +1,5 @@
 import './App.css'
-import {BrowserRouter,Routes,Route, HashRouter} from 'react-router-dom'
+import { BrowserRouter, Routes, Route, HashRouter } from 'react-router-dom'
 import Auth from './layout/Auth'
 import Login from './paginas/Login'
 import { LandinPage } from './paginas/LandinPage'
@@ -13,6 +13,7 @@ import Crear from './paginas/Crear'
 import Actualizar from './paginas/Actualizar'
 import Perfil from './paginas/Perfil'
 import { Confirmar } from './paginas/Confirmar'
+import { AuthProvider } from './context/AuthProvider'
 import Restablecer from './paginas/Restablecer'
 
 
@@ -21,30 +22,32 @@ import Restablecer from './paginas/Restablecer'
 function App() {
   return (
     <>
-    <HashRouter>
-      <Routes>
-        
-        <Route index element={<LandinPage/>}/>
+      <HashRouter>
+        <AuthProvider>
+          <Routes>
 
-        <Route path='/' element={<Auth/>}>
-          <Route path='login' element={<Login/>}/>
-          <Route path='register' element={<Register/>}/>
-          <Route path='forgot/:id' element={<Forgot/>}/>
-          <Route path='confirmar/:token' element={<Confirmar/>}/>
-          <Route path='recuperar-password/:token' element={<Restablecer/>}/>
-          <Route path='*' element={<NotFound />} />
-        </Route>
+            <Route index element={<LandinPage />} />
 
-        <Route path='/dashboard' element={<Dashboard/>}>
-          <Route index element={<Perfil/>}/>
-          <Route path='listar' element={<Listar/>}/>
-          <Route path='visualizar/:id' element={<Visualizar/>}/>
-          <Route path='crear' element={<Crear/>}/>
-          <Route path='actualizar/:id' element={<Actualizar/>}/>
-        </Route>
+            <Route path='/' element={<Auth />}>
+              <Route path='login' element={<Login />} />
+              <Route path='register' element={<Register />} />
+              <Route path='forgot/:id' element={<Forgot />} />
+              <Route path='confirmar/:token' element={<Confirmar />} />
+              <Route path='recuperar-password/:token' element={<Restablecer />} />
+              <Route path='*' element={<NotFound />} />
+            </Route>
 
-      </Routes>
-    </HashRouter>
+            <Route path='/dashboard' element={<Dashboard />}>
+              <Route index element={<Perfil />} />
+              <Route path='listar' element={<Listar />} />
+              <Route path='visualizar/:id' element={<Visualizar />} />
+              <Route path='crear' element={<Crear />} />
+              <Route path='actualizar/:id' element={<Actualizar />} />
+            </Route>
+
+          </Routes>
+        </AuthProvider>
+      </HashRouter>
     </>
   )
 }
