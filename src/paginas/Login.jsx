@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom'
 import AuthContext from '../context/AuthProvider'
 import axios from 'axios'
 import { useState, useContext } from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import Mensaje from '../componets/Alertas/Mensaje'
-import AuthContext from '../context/AuthProvider'
+// import AuthContext from '../context/AuthProvider'
 
 
 
