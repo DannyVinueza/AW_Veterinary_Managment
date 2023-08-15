@@ -11,7 +11,7 @@ import Mensaje from '../componets/Alertas/Mensaje'
 
 const Login = () => {
     const navigate = useNavigate()
-    const { setAuth, setEstado } = useContext(AuthContext)
+    const { setAuth, setEstado, auth } = useContext(AuthContext)
     const [mensaje, setMensaje] = useState({})
 
     const [form, setform] = useState({
@@ -73,7 +73,6 @@ const Login = () => {
 
                         <div className="my-4">
                             <button className="py-2 w-full block text-center bg-gray-500 text-slate-300 border rounded-xl hover:scale-100 duration-300 hover:bg-gray-900 hover:text-white">Login</button>
-                            <Link to="/dashboard" className="py-2 w-full block text-center bg-gray-500 text-slate-300 border rounded-xl hover:scale-100 duration-300 hover:bg-gray-900 hover:text-white">Login</Link>
                         </div>
 
                     </form>
