@@ -15,8 +15,8 @@ import Perfil from './paginas/Perfil'
 import { Confirmar } from './paginas/Confirmar'
 import { AuthProvider } from './context/AuthProvider'
 import Restablecer from './paginas/Restablecer'
-
-
+//import { PrivateRoute } from './routes/PrivateRoute'
+// falta implementar el private router
 
 
 function App() {

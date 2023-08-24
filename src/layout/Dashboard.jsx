@@ -1,6 +1,5 @@
 import { Link, Outlet, useLocation, Navigate } from 'react-router-dom'
 import { useContext } from 'react'
-// import { Link, , Outlet, useLocation } from 'react-router-dom'
 import AuthContext from '../context/AuthProvider'
 
 
@@ -47,7 +46,7 @@ const Dashboard = () => {
                     </div>
                     <div>
                         <Link to='/' className=" text-white mr-3 text-md block hover:bg-red-900 text-center
-                        bg-red-800 px-4 py-1 rounded-lg">Salir</Link>
+                        bg-red-800 px-4 py-1 rounded-lg" onClick={()=>{localStorage.removeItem('token')}}>Salir</Link>
                     </div>
                 </div>
                 <div className='overflow-y-scroll p-8'>
