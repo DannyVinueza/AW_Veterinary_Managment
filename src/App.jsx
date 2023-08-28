@@ -23,29 +23,29 @@ function App() {
     <>
       <HashRouter>
         <AuthProvider>
-          <Routes>
+          <PrivateRoute>
+            <Routes>
+              <Route index element={<LandinPage />} />
+              
+              <Route path='/' element={<Auth />}>
+                <Route path='login' element={<Login />} />
+                <Route path='register' element={<Register />} />
+                <Route path='forgot/:id' element={<Forgot />} />
+                <Route path='confirmar/:token' element={<Confirmar />} />
+                <Route path='recuperar-password/:token' element={<Restablecer />} />
+                <Route path='*' element={<NotFound />} />
+              </Route>
 
-            <Route index element={<LandinPage />} />
-
-            <Route path='/' element={<Auth />}>
-              <Route path='login' element={<Login />} />
-              <Route path='register' element={<Register />} />
-              <Route path='forgot/:id' element={<Forgot />} />
-              <Route path='confirmar/:token' element={<Confirmar />} />
-              <Route path='recuperar-password/:token' element={<Restablecer />} />
-              <Route path='*' element={<NotFound />} />
-            </Route>
-
-            <Route path='/dashboard' element={<Dashboard />}>
-            <PrivateRoute>
-              <Route index element={<Perfil />} />
-              <Route path='listar' element={<Listar />} />
-              <Route path='visualizar/:id' element={<Visualizar />} />
-              <Route path='crear' element={<Crear />} />
-              <Route path='actualizar/:id' element={<Actualizar />} />
-              </PrivateRoute>
-            </Route>
-          </Routes>
+              <Route path='/dashboard' element={<Dashboard />}>
+                <Route index element={<Perfil />} />
+                <Route path='listar' element={<Listar />} />
+                <Route path='visualizar/:id' element={<Visualizar />} />
+                <Route path='crear' element={<Crear />} />
+                <Route path='actualizar/:id' element={<Actualizar />} />
+              </Route>
+              
+            </Routes>
+          </PrivateRoute>
         </AuthProvider>
       </HashRouter>
     </>
