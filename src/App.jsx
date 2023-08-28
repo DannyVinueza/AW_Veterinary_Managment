@@ -15,8 +15,7 @@ import Perfil from './paginas/Perfil'
 import { Confirmar } from './paginas/Confirmar'
 import { AuthProvider } from './context/AuthProvider'
 import Restablecer from './paginas/Restablecer'
-//import { PrivateRoute } from './routes/PrivateRoute'
-// falta implementar el private router
+import { PrivateRoute } from './routes/PrivateRoute'
 
 
 function App() {
@@ -38,13 +37,14 @@ function App() {
             </Route>
 
             <Route path='/dashboard' element={<Dashboard />}>
+            <PrivateRoute>
               <Route index element={<Perfil />} />
               <Route path='listar' element={<Listar />} />
               <Route path='visualizar/:id' element={<Visualizar />} />
               <Route path='crear' element={<Crear />} />
               <Route path='actualizar/:id' element={<Actualizar />} />
+              </PrivateRoute>
             </Route>
-
           </Routes>
         </AuthProvider>
       </HashRouter>
