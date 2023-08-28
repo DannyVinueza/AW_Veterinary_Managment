@@ -10,7 +10,7 @@ const FormularioPerfil = () => {
 
   const formik = useFormik({
     initialValues: {
-	    id: auth._id || "",
+	id: auth._id ,
       nombre: auth.nombre || "",
       apellido: auth.apellido || "",
       direccion: auth.direccion || "",
