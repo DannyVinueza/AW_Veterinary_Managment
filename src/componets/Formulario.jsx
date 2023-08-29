@@ -40,24 +40,27 @@ export const Formulario = ( {paciente}) => {
             await axios.put(url, form, options)
             navigate('/dashboard/listar')
         }else{
-        try {
-            const token = localStorage.getItem('token')
-            form.id = auth._id
-            const url = `${import.meta.env.VITE_BACKEND_URL}/paciente/registro`
-            const options={
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`
-                }
+        
+    }
+
+    try {
+        const token = localStorage.getItem('token')
+        // form.id = auth._id
+        const url = `${import.meta.env.VITE_BACKEND_URL}/paciente/registro`
+        const options={
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
             }
-            await axios.post(url,form,options)
-            navigate('/dashboard/listar')
-        } catch (error) {
-						setMensaje({ respuesta: error.response.data.msg, tipo: false })
-            setTimeout(() => {
-                setMensaje({})
-            }, 3000);
         }
+        console.log(form)
+        await axios.post(url,form,options)
+        navigate('/dashboard/listar')
+    } catch (error) {
+                    setMensaje({ respuesta: error.response?.data.msg, tipo: false })
+        setTimeout(() => {
+            setMensaje({})
+        }, 3000);
     }
 }
 
