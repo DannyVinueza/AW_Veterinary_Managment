@@ -10,7 +10,7 @@ const FormularioPerfil = () => {
 
   const formik = useFormik({
     initialValues: {
-	id: auth._id ,
+      id: auth._id,
       nombre: auth.nombre || "",
       apellido: auth.apellido || "",
       direccion: auth.direccion || "",
@@ -25,7 +25,7 @@ const FormularioPerfil = () => {
       email: Yup.string()
         .email("Correo electrónico no válido")
         .required("El correo electrónico es requerido"),
-        id: Yup.string(),
+      id: Yup.string(),
     }),
     onSubmit: async (values) => {
       const resultado = await actualizarPerfil(values);
@@ -35,31 +35,30 @@ const FormularioPerfil = () => {
       }, 3000);
     },
   });
-    const handleChange = (e) => {
-        setform({
-            ...form,
-            [e.target.name]: e.target.value
-        })
-    }
-    
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        if (Object.values(form).includes(""))
-        {
-            setMensaje({ respuesta: "Todos los campos deben ser ingresados", tipo: false })
-                setTimeout(() => {
-                    setMensaje({})
-                }, 3000);
-						return
-        }
-        const resultado = await actualizarPerfil(form)
-        setMensaje(resultado)
-        setTimeout(() => {
-            setMensaje({})
-        }, 3000);
+  const handleChange = (e) => {
+    setform({
+      ...form,
+      [e.target.name]: e.target.value
+    })
   }
-    
-   
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    if (Object.values(form).includes("")) {
+      setMensaje({ respuesta: "Todos los campos deben ser ingresados", tipo: false })
+      setTimeout(() => {
+        setMensaje({})
+      }, 3000);
+      return
+    }
+    const resultado = await actualizarPerfil(form)
+    setMensaje(resultado)
+    setTimeout(() => {
+      setMensaje({})
+    }, 3000);
+  }
+
+
   return (
     <form onSubmit={formik.handleSubmit}>
       {Object.keys(mensaje).length > 0 && (
@@ -75,11 +74,10 @@ const FormularioPerfil = () => {
         <input
           id="nombre"
           type="text"
-          className={`border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md  ${
-            formik.touched.nombre && formik.errors.nombre
+          className={`border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md  ${formik.touched.nombre && formik.errors.nombre
               ? "border-red-500"
               : "border-gray-300"
-          }`}
+            }`}
           placeholder="nombre"
           name="nombre"
           value={formik.values.nombre}
@@ -103,11 +101,10 @@ const FormularioPerfil = () => {
         <input
           id="apellido"
           type="text"
-          className={`border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md  ${
-            formik.touched.apellido && formik.errors.apellido
+          className={`border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md  ${formik.touched.apellido && formik.errors.apellido
               ? "border-red-500"
               : "border-gray-300"
-          }`}
+            }`}
           placeholder="apellido"
           name="apellido"
           value={formik.values.apellido}
@@ -131,11 +128,10 @@ const FormularioPerfil = () => {
         <input
           id="direccion"
           type="text"
-          className={`border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md  ${
-            formik.touched.direccion && formik.errors.direccion
+          className={`border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md  ${formik.touched.direccion && formik.errors.direccion
               ? "border-red-500"
               : "border-gray-300"
-          }`}
+            }`}
           placeholder="direccion"
           name="direccion"
           value={formik.values.direccion}
@@ -159,11 +155,10 @@ const FormularioPerfil = () => {
         <input
           id="telefono"
           type="text"
-          className={`border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md ${
-            formik.touched.telefono && formik.errors.telefono
+          className={`border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md ${formik.touched.telefono && formik.errors.telefono
               ? "border-red-500"
               : "border-gray-300"
-          }`}
+            }`}
           placeholder="telefono"
           name="telefono"
           value={formik.values.telefono}
@@ -187,11 +182,10 @@ const FormularioPerfil = () => {
         <input
           id="email"
           type="text"
-          className={`border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md  ${
-            formik.touched.email && formik.errors.email
+          className={`border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md  ${formik.touched.email && formik.errors.email
               ? "border-red-500"
               : "border-gray-300"
-          }`}
+            }`}
           placeholder="email"
           name="email"
           value={formik.values.email}

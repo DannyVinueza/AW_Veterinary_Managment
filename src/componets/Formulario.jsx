@@ -53,7 +53,6 @@ export const Formulario = ( {paciente}) => {
                 Authorization: `Bearer ${token}`
             }
         }
-        console.log(form)
         await axios.post(url,form,options)
         navigate('/dashboard/listar')
     } catch (error) {

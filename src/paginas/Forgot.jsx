@@ -34,8 +34,8 @@ export const Forgot = () => {
                 <div className="md:w-4/5 sm:w-full">
 
                     {Object.keys(mensaje).length > 0 && <Mensaje tipo={mensaje.tipo}>{mensaje.respuesta}</Mensaje>}
-                    <h1 className="text-3xl font-semibold mb-2 text-center uppercase  text-gray-500">Forgot your password!</h1>
-                    <small className="text-gray-400 block my-4 text-sm">Don't worry, please enter your details</small>
+                    <h1 className="text-3xl font-semibold mb-2 text-center uppercase  text-gray-500">¿Olvidaste tu contraseña?</h1>
+                    <small className="text-gray-400 block my-4 text-sm">No te preocupes, porfavor ingresa los siguientes datos</small>
 
 
                     <form onSubmit={handleSubmit}>
@@ -47,7 +47,7 @@ export const Forgot = () => {
                         </div>
 
                         <div className="mb-3">
-                            <button className="bg-gray-600 text-slate-300 border py-2 w-full rounded-xl mt-5 hover:scale-105 duration-300 hover:bg-gray-900 hover:text-white">Send email
+                            <button className="bg-gray-600 text-slate-300 border py-2 w-full rounded-xl mt-5 hover:scale-105 duration-300 hover:bg-gray-900 hover:text-white">Enviar email
                             </button>
                         </div>
 
@@ -57,7 +57,7 @@ export const Forgot = () => {
                     </div>
 
                     <div className="mt-3 text-sm flex justify-between items-center">
-                        <p>You already remembered</p>
+                        <p>Ya te acordaste</p>
                         <Link to="/login" className="py-2 px-5 bg-gray-600 text-slate-300 border rounded-xl hover:scale-110 duration-300 hover:bg-gray-900 hover:text-white">Login</Link>
 
                     </div>

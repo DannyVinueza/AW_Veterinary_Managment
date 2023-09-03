@@ -39,7 +39,7 @@ const handleDelete = async (id) => {
                 salida:new Date().toString()
             }
             await axios.delete(url, {headers, data});
-            //listarPacientes()
+            listarPacientes()
         }
     }
     catch (error) {
