@@ -103,7 +103,7 @@ export const Register = () => {
                     </div>
 
                     <div className="mt-3 text-sm flex justify-between items-center">
-                        <p>¿No tienes una cuenta?</p>
+                        <p>¿Ya tienes una cuenta?</p>
                         <Link to="/login" className="py-2 px-5 bg-gray-500 text-slate-300 border rounded-xl hover:scale-110 duration-300 hover:bg-gray-900 ">Login</Link>
                     </div>
 
