@@ -29,7 +29,9 @@ export const Formulario = ({ paciente }) => {
             .matches(/^\d{7}$/, 'Debe contener exactamente 7 dígitos')
             .required("El número convencional es obligatorio"),
         salida: Yup.date().required("La fecha de salida es obligatoria"),
-        sintomas: Yup.string().required("Los síntomas son obligatorios"),
+        sintomas: Yup.string()
+            .matches(/^[A-Za-z\s]+$/, 'Solo se permiten letras mayúsculas y minúsculas')
+            .required("Los síntomas son obligatorios"),
     });
 
     const initialValues = {
@@ -277,6 +279,7 @@ export const Formulario = ({ paciente }) => {
                     <div className="text-red-500">{formik.errors.sintomas}</div>
                 )}
             </div>
+
 
 
 
