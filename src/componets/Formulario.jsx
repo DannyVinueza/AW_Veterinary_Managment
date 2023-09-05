@@ -29,10 +29,9 @@ export const Formulario = ({ paciente }) => {
             .matches(/^\d{7}$/, 'Debe contener exactamente 7 dígitos')
             .required("El número convencional es obligatorio"),
         salida: Yup.date().required("La fecha de salida es obligatoria"),
-        sintomas: Yup.string()
-            .matches(/^[A-Za-z\s]+$/, 'Solo se permiten letras mayúsculas y minúsculas')
-            .required("Los síntomas son obligatorios"),
+        sintomas: Yup.string().required("Los síntomas son obligatorios"),
     });
+
 
     const initialValues = {
         nombre: paciente?.nombre ?? "",
@@ -87,6 +86,7 @@ export const Formulario = ({ paciente }) => {
         validationSchema,
         onSubmit,
     });
+
 
 
     const handleChange = (e) => {
@@ -151,8 +151,8 @@ export const Formulario = ({ paciente }) => {
                     name="nombre"
                     value={formik.values.nombre}
                     onChange={(e) => {
-                        const trimmedValue = e.target.value.trim(); // Elimina espacios en blanco al principio y al final
-                        formik.setFieldValue("nombre", trimmedValue); // Actualiza el valor en formik
+                        const trimmedValue = e.target.value.trim();
+                        formik.setFieldValue("nombre", trimmedValue);
                     }}
                     onBlur={formik.handleBlur}
                     pattern="[A-Za-z\s]*"
@@ -256,6 +256,25 @@ export const Formulario = ({ paciente }) => {
                 )}
             </div>
             <div className="mb-5">
+                <label htmlFor="salida" className="text-gray-700 uppercase font-bold text-sm">
+                    Fecha de salida:
+                </label>
+                <input
+                    id="salida"
+                    type="date"
+                    className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+                    placeholder="salida"
+                    name="salida"
+                    value={formik.values.salida}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    required
+                />
+                {formik.touched.salida && formik.errors.salida && (
+                    <div className="text-red-500">{formik.errors.salida}</div>
+                )}
+            </div>
+            <div className="mb-5">
                 <label htmlFor="sintomas" className="text-gray-700 uppercase font-bold text-sm">
                     Síntomas:
                 </label>
@@ -279,16 +298,15 @@ export const Formulario = ({ paciente }) => {
                     <div className="text-red-500">{formik.errors.sintomas}</div>
                 )}
             </div>
-
-
-
-
-            <input
-                type="submit"
-                className='bg-gray-600 w-full p-3 
+            <div>
+                <input
+                    type="submit"
+                    className="bg-gray-600 w-full p-3 
                     text-slate-300 uppercase font-bold rounded-lg 
-                    hover:bg-gray-900 cursor-pointer transition-all'
-                value={paciente?._id ? 'Actualizar paciente' : 'Registrar paciente'} />
+                    hover:bg-gray-900 cursor-pointer transition-all"
+                    value={paciente?._id ? "Actualizar paciente" : "Registrar paciente"}
+                />
+            </div>
         </form>
     );
-};
+}
