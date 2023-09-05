@@ -172,17 +172,19 @@ export const Formulario = ({ paciente }) => {
                     name="propietario"
                     value={formik.values.propietario}
                     onChange={(e) => {
-                        const trimmedValue = e.target.value.trim();
+                        // Elimina espacios en blanco al principio
+                        const trimmedValue = e.target.value.replace(/^\s+/g, '');
                         formik.setFieldValue("propietario", trimmedValue);
                     }}
                     onBlur={formik.handleBlur}
-                    pattern="[A-Za-z\s]*"
+                    pattern="^[A-Za-zñÑáéíóúÁÉÍÓÚ]+( [A-Za-zñÑáéíóúÁÉÍÓÚ]+)*$"
                     required
                 />
                 {formik.touched.propietario && formik.errors.propietario && (
                     <div className="text-red-500">{formik.errors.propietario}</div>
                 )}
             </div>
+
             <div className="mb-5">
                 <label htmlFor="email" className="text-gray-700 uppercase font-bold text-sm">
                     Email:
@@ -252,25 +254,6 @@ export const Formulario = ({ paciente }) => {
                 )}
             </div>
             <div className="mb-5">
-                <label htmlFor="salida" className="text-gray-700 uppercase font-bold text-sm">
-                    Fecha de salida:
-                </label>
-                <input
-                    id="salida"
-                    type="date"
-                    className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-                    placeholder="salida"
-                    name="salida"
-                    value={formik.values.salida}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    required
-                />
-                {formik.touched.salida && formik.errors.salida && (
-                    <div className="text-red-500">{formik.errors.salida}</div>
-                )}
-            </div>
-            <div className="mb-5">
                 <label htmlFor="sintomas" className="text-gray-700 uppercase font-bold text-sm">
                     Síntomas:
                 </label>
@@ -282,17 +265,21 @@ export const Formulario = ({ paciente }) => {
                     name="sintomas"
                     value={formik.values.sintomas}
                     onChange={(e) => {
-                        const trimmedValue = e.target.value.trim();
+                        // Elimina espacios en blanco al principio
+                        const trimmedValue = e.target.value.replace(/^\s+/g, '');
                         formik.setFieldValue("sintomas", trimmedValue);
                     }}
                     onBlur={formik.handleBlur}
-                    pattern="[A-Za-z\s]*"
+                    pattern="^[A-Za-zñÑáéíóúÁÉÍÓÚ]+( [A-Za-zñÑáéíóúÁÉÍÓÚ]+)*$"
                     required
                 />
                 {formik.touched.sintomas && formik.errors.sintomas && (
                     <div className="text-red-500">{formik.errors.sintomas}</div>
                 )}
             </div>
+
+
+
             <input
                 type="submit"
                 className='bg-gray-600 w-full p-3 

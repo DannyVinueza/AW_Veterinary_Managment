@@ -35,6 +35,12 @@ const FormularioPerfil = () => {
       }, 3000);
     },
   });
+    // Función para eliminar espacios en blanco al principio y al final
+    const trimInputValue = (e) => {
+      const { name, value } = e.target;
+      formik.setFieldValue(name, value.trim());
+    };
+    
   const handleChange = (e) => {
     setform({
       ...form,
