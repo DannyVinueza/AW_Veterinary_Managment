@@ -18,10 +18,16 @@ const FormularioPerfil = () => {
       email: auth.email || "",
     },
     validationSchema: Yup.object({
-      nombre: Yup.string().required("El nombre es requerido"),
-      apellido: Yup.string().required("El apellido es requerido"),
+      nombre: Yup.string()
+        .matches(/^[A-Za-zñÑ\s]+$/, "Solo letras y espacios son permitidos")
+        .required("El nombre es requerido"),
+      apellido: Yup.string()
+        .matches(/^[A-Za-zñÑ\s]+$/, "Solo letras y espacios son permitidos")
+        .required("El apellido es requerido"),
       direccion: Yup.string().required("La dirección es requerida"),
-      telefono: Yup.string().required("El teléfono es requerido"),
+      telefono: Yup.string()
+        .matches(/^\d{10}$/, "El teléfono debe contener 10 dígitos numéricos")
+        .required("El teléfono es requerido"),
       email: Yup.string()
         .email("Correo electrónico no válido")
         .required("El correo electrónico es requerido"),
